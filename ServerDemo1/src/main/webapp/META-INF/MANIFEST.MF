@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: ServerDemo1
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: gn.teja
+Implementation-Vendor-Id: com.rsrit.Dops.Demo1
+Build-Jdk: 1.8.0_144
+Implementation-URL: http://projects.spring.io/spring-boot/DataOpsDemoS
+ erver/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

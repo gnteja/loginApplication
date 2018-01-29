@@ -3,7 +3,8 @@ import { ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from '../user.service';
-
+import { AuthenticationService } from '../authentication.service'
+import { AlertService } from '../alert.service';
 
 @Component({
   selector: 'app-login',
@@ -12,32 +13,43 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent implements OnInit {
 
-  @ViewChild('username');
-  @ViewChild('password');
+  username: string;
+  password: string;
+
+
+  constructor(private router: Router, 
+    private user: UserService, 
+    private authService: AuthenticationService,
+    private alertService: AlertService) { }
 
 
   ngOnInit() {
 
   }
-constructor(private router: Router, private user: UserService) { }
+
 
  login() {
-
-   let username = this.username.nativeElement;
-   let password = this.password.nativeElement;
-
-  // console.log(username.value, password.value);
-
-  // this.loading = true;
-  //       this.authenticationService.login(this.model.username, this.model.password)
-  //           .subscribe(result => {
-  //               if (result === true) {
-  //                   this.router.navigate(['/dashboard']);
-  //               } else {
-  //                   this.error = 'Username or password is incorrect';
-  //                   this.loading = false;
-  //               }
-  //           });
+    
+         this.authService.login(this.username, this.password)
+            .subscribe(result => {
+                if (result != null){
+                     // console.log(result);
+                      // console.log(this.user.getUserLogService());
+                      this.user.setUserLogService();
+                      localStorage.setItem('currentUser', JSON.stringify(result));
+                      // console.log(this.user.getUserLogService());
+                      this.router.navigate(['dashboard']);
+                }
+                else{
+                  this.alertService.error('Username or password is incorrect');
+                }
+              },
+               error => {
+                    console.log(error._body);
+                    console.log('login failed');
+                    
+            });
     }
+
 
 }

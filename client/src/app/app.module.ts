@@ -10,11 +10,13 @@ import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-
+import { HttpModule } from '@angular/http'
 import { UserService } from './user.service';
 import { AuthGuard } from './auth.guard';
 import { AuthenticationService } from './authentication.service';
-
+import { AlertService } from './alert.service';
+import { AlertComponent } from './alert/alert.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -38,17 +40,22 @@ const appRoutes: Routes = [
     SignupComponent,
     DashboardComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
      RouterModule.forRoot(appRoutes),
-     FormsModule
+     FormsModule,
+     HttpModule,
+     HttpClientModule
+
   ],
   providers: [
     UserService, 
     AuthGuard, 
     AuthenticationService,
+    AlertService
         ],
   bootstrap: [AppComponent]
 })

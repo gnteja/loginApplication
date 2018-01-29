@@ -16,14 +16,7 @@
 												<span class="input-group-addon">
 													<i class="glyphicon glyphicon-user"></i>
 												</span>
-												<input class="form-control" placeholder="username" type="text"  #username autofocus required/>
-
-												<!-- 
-													[(ngModel)] = model.username  = "ngModel"
-													[(ngModel)] = model.password ="ngModel"
-
-
-												-->
+												<input class="form-control" placeholder="username" type="text" name="username" required [(ngModel)]="username">
 
 											</div>
 										</div>
@@ -33,7 +26,7 @@
 												<span class="input-group-addon">
 													<i class="glyphicon glyphicon-lock"></i>
 												</span>
-												<input class="form-control" placeholder="Password" type="password"  value="" #password required>
+												<input class="form-control" placeholder="Password" type="password" name="password" [(ngModel)]="password">
 											</div>
 										</div>
 
