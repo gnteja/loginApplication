@@ -35,34 +35,33 @@ export class SignupComponent implements OnInit {
 
   signup(){
 
+    if (this.userEmail !== null && this.username !==null){
 
-    //console.log(this.user.password);
-    
-    if (this.password === this.confirmpassword){
+             if (this.password === this.confirmpassword){
+                  this.authenticationService.signup(this.username, this.password, this.userEmail)
+                  .subscribe(result => {
+                          if (result.length > 0){
+                            this.alertService.success(result,true);
+                            this.router.navigate(['login']);  
+                          }
+                          else{
+                                   this.alertService.error('Username already Exist try with another username ');
+                          }
+                        },
+                         error => {
+                               console.log('SignUp failed');
+                               console.log(error._body);
+                      });
+              } 
+              else{
+                this.alertService.error("Password and confirm Password didn't matched");
+              }
+              
+     } else{
+       alert("enter all the fields required");
+       console.log("validation failed ");
+     }
 
-   		// console.log(this.user.username.value, this.user.email.value, this.user.password.value);
-       // console.log("Passwords matched!");
-        this.authenticationService.signup(this.username, this.password, this.userEmail)
-        .subscribe(result => {
-                if (result.length > 0){
-                  this.alertService.success(result,true);
-                  this.router.navigate(['login']);
-                  
-                }
-                else{
-                  this.alertService.error('Username already Exist try with another username ');
-                }
-              },
-               error => {
-                     console.log('SignUp failed');
-                     console.log(error._body);
-            });
-    } 
-
-    else{
-      this.alertService.error("Password and confirm Password didn't matched");
-    }
-    
-  }
-
+   }
+     // console.log(this.user.username.value, this.user.email.value, this.user.password.value);
 }

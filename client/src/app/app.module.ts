@@ -17,6 +17,8 @@ import { AuthenticationService } from './authentication.service';
 import { AlertService } from './alert.service';
 import { AlertComponent } from './alert/alert.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { UserpanelComponent } from './userpanel/userpanel.component';
 
 
 const appRoutes: Routes = [
@@ -41,7 +43,9 @@ const appRoutes: Routes = [
     DashboardComponent,
     NavbarComponent,
     HomeComponent,
-    AlertComponent
+    AlertComponent,
+    AdminPanelComponent,
+    UserpanelComponent
   ],
   imports: [
     BrowserModule,

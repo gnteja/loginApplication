@@ -2,7 +2,9 @@
 	<div *ngIf="message" [ngClass]="{ 
 			 'alert': message,
 			 'alert-success': message.type === 'success',
-			 'alert-danger alert-dismissable': message.type === 'error' 
+			 'alert-danger data-auto-dismiss alert-dismissable': message.type === 'error' 
+
+
 			}">
 				{{message.text}}
 	</div>

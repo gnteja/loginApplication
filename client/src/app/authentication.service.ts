@@ -30,12 +30,19 @@ export class AuthenticationService {
     }
 
     signup(username : string, password: string, usermail: string){
+
           return this.http.post( 'http://localhost:8080/register', { username: username, password: password, email: usermail }, { responseType: 'text' })
         }
 
     logout(){
         this.user.logoutUserService();
         localStorage.removeItem('currentUser');
+
+    }
+
+    userGetAll(){
+
+        return this.http.get( 'http://localhost:8080/dashboard/admin')
 
     }
    

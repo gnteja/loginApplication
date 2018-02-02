@@ -3,6 +3,10 @@ import com.rsrit.Dops.Demo.Model.*;
 import com.rsrit.Dops.Demo.Repo.UserRepo;
 import com.rsrit.Dops.Demo.Service.UserService;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,5 +42,15 @@ public class WebController {
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public String sayHello() {
 		return "Hello from the server ";
+	}
+
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/dashboard/admin", method = RequestMethod.GET)
+	public List<UserInfo> userGetAll(){
+		List<UserInfo> userList = new ArrayList<>();
+		Iterable <UserInfo> user = repo.findAll();
+		user.forEach(userList::add);
+		System.out.println("userlist printed ");
+		return userList;
 	}
 }

@@ -1,0 +1,51 @@
+<div style="text-align: none;">
+
+	<div class="hello">
+		
+		  <h2>Welcome Admin ...</h2>
+		  <h4>Authentication is successful</h4>
+	</div>
+
+
+	<div class="userRegister border-top-0">
+
+		<h4>User Registration</h4>
+		
+		<form class="form-inline"(ngSubmit)= signup()>
+		   
+			  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="username" placeholder="username" [(ngModel)]="username" >
+		    
+			  <input type="email" class="form-control mb-2 mr-sm-2 mb-sm-0" name="email" placeholder="email" [(ngModel)]="email" >
+		
+			  <input type="password" class="form-control mb-2 mr-sm-2 mb-sm-0" name="password" placeholder="password" [(ngModel)]="password" required minlength="6" maxlength="8">
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+
+	<div class="user-table">
+		<h4>User Table</h4>
+		<table class="table table-bordered">
+		  <thead>
+		    <tr>
+		      <th scope="col">username</th>
+		      <th scope="col">email</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr *ngFor="let user of listofUsers">
+		      <td>{{user.username}}</td>
+		      <td>{{user.email}}</td>
+		    </tr>
+		  </tbody>
+		</table>
+
+	</div>
+
+	
+	
+</div> 
+
+
+  
+
+
